@@ -1,0 +1,27 @@
+
+<%- include("partials/header"); -%>
+<div style="text-align: center;">
+   
+<form action="/register" method="POST">
+    <h1> Register </h1>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <% if (typeof error !== 'undefined') { %>
+        <p class="text-danger error"><%= error %></p>
+      <% } %>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <input type="checkbox" name="isadmin">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="text-center">
+        <p>member? <a href="/login">login</a></p>
+    </div>
+</form>
+</div>
+<%- include("partials/footer"); -%>

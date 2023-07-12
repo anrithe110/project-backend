@@ -1,0 +1,67 @@
+<%- include("partials/header"); -%>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+<script>
+$(document).ready(function () {
+$('#uploadForm').submit(function () {
+$("#status").empty().text("File is uploading...");
+$(this).ajaxSubmit({
+error: function (xhr) {
+status('Error: ' + xhr.status);
+},
+
+success: function (response) {
+console.log(response)
+$("#status").empty().text(response);
+}
+});
+
+return false;
+});
+});  
+</script>
+<div style="text-align: center; margin-left: 200px;">
+ <a href="/Delete"><button class="btn btn-primary">Delete files</button></a>
+<form class="needs-validation" enctype="multipart/form-data" action="/newproduct" method="post">
+<div class="form-row">
+<div class="col-md-4 mb-3">
+<br>
+<input class="btn btn-primary" type="file" name="image" accept="image/jpeg, image/png, image/jpg">
+<div class="valid-feedback">Looks good!</div>                    
+</div>                            
+<div class="col-md-4 mb-3">                               
+<label>Product name</label>              
+<input type="text" class="form-control" id="validationCustom02" name="name"type="text" required>
+<div class="valid-feedback">Looks good!</div>
+</div>
+<div class="col-md-4 mb-3">
+<label>price</label>
+<div class="input-group">
+<input class="form-control" id="validationCustomUsername" name="price" type="number" required>
+<div class="invalid-feedback"> Looks good! </div>                                       
+</div>
+</div>
+</div>
+<div class="form-row">
+<div class="col-md-6 mb-3">
+<label>class</label>
+<input type="text" class="form-control" id="validationCustom03" name="class" required>
+<div class="invalid-feedback"> Looks good!</div> 
+</div>
+<div class="col-md-3 mb-3">
+<label>specs / descrition</label>
+<textarea type="text" class="form-control" rows="30" cols="30" name="specs" required></textarea>
+<div class="invalid-feedback">Looks good!
+</div>
+</div>
+<div class="col-md-3 mb-3">
+<label>productCode</label>
+<input type="number" name="productcode" class="form-control"
+id="validationCustom05" required>
+<div class="invalid-feedback">Looks good!</div>
+</div>
+</div>
+<button class="btn btn-primary" type="submit" value="add Product" name="submit">Save Product</button>                 
+</form>
+</div>
+<%- include("partials/footer"); -%>

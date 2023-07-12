@@ -1,0 +1,30 @@
+<%- include("partials/header"); -%>
+  <div class="card-deck">
+    <style>
+      .card {
+        max-width: 364px;
+        max-height: 364px;
+      }
+      .card-img-top{
+        max-width: 364px;
+        max-height: 200px;
+      }
+    </style>
+  <div class="card-group">
+    <% items.forEach((item)=>{ %>
+      <a href="/Product/<%=item._id%>">
+        <div class="card">
+          <img class="card-img-top" src="images/<%=item.image%>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%=item.name%>
+            </h5>
+            <p class="card-text">
+              <%=item.price%> ₾
+            </p>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+  </div>
+  <%- include("partials/footer"); -%>

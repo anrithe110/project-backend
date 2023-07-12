@@ -1,0 +1,38 @@
+<%- include("partials/header"); -%>
+<style>
+  .card {
+    max-width: 364px;
+  }
+  .card-img-top{
+    max-width: 364px;
+   max-height: 200px;
+  }
+</style>
+<div class="card-group">
+<% items.forEach((item)=>{ %>
+    <div class="card">
+      <img class="card-img-top" src="images/<%=item.image%>" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%=item.name%>
+        </h5>
+        <p class="card-text">
+          <%=item.price%> ₾
+        </p>
+        <p class="card-text">
+          <%=item.productCode%> 
+        </p>
+        <p class="card-text">
+          <%=item.class%> 
+        </p>
+        <p class="card-text">
+          <%=item.image%> 
+        </p>
+        <form action="/delete"method="post">
+          <button class="btn btn-primary" name="deleting" value="<%=item.image%>" onchange="this.form.submit()">delete</button>
+        </form>
+      </div>
+    </div>
+  <% }) %>
+</div>
+<%- include("partials/footer"); -%>
